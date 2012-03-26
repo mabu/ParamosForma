@@ -116,5 +116,9 @@ if (!empty($_POST))
       sistemoje</a> (jeigu naudojatės elektronine bankininkyste), tuomet
       nereikės siųsti arba nešti popierinės formos originalo į VMI.
     </p>
+    <p>
+      Daugiau informacijos apie 2% paramą galite rasti
+      <a href="http://www.vmi.lt/lt/?itemId=10146527">VMI svetainėje</a>.
+    </p>
   </body>
 </html>
