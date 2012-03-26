@@ -93,6 +93,33 @@ class ParamosForma
         $this->write(11.65, 24.9, $this->firstName, 15);
         $this->write(109.7, 24.9, $this->lastName, 31);
         $this->write(11.65, 34.85, $this->address, 50);
+
+        // Mokestinis laikotarpis – jei po gegužės 1, šie metai, kitaip praeiti
+        $year = date('Y') - (date('m') * 100 + date('d') <= 501);
+        $this->write(14.6, 52.7, $year, 4);
+
+        // Pažymi laukelį 6S „Mokesčio dalį skiriu vienetams, turintiems teisę
+        // gauti paramą“
+        $this->write(73.55, 52.3, 'X', 1);
+
+        // Gavėjo tipas: 1 – politinė partja, 2 – vienetas, turintis teisę gauti
+        // paramą
+        $this->write(10.65, 73.6, '2', 1);
+
+        $this->write(27.55, 73.6, $this->code, 9);
+
+        $this->write(210.6, 73.6, $this->percent, 1);
+        if (!ctype_digit($this->percentFrac) || $this->percent == 2)
+        {
+            $this->percentFrac = '00';
+        }
+        $this->write(220.9, 73.6, str_pad($this->percentFrac, 2, '0'), 2);
+
+        if ($this->duration > 1)
+        {
+            $this->write(242.6, 73.6, $year + $this->duration - 1, 4);
+        }
+
         $this->pdf->Output($filename, 'D');
     }
 
